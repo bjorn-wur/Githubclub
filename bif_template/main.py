@@ -1,8 +1,8 @@
-def main():
+def main() -> None:
     print("Hello World!")
 
 
-def return_hello_world():
+def return_hello_world() -> str:
     return "Hello World!"
 
 
