@@ -1,0 +1,14 @@
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+ignore = ["E402"]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    "N", # pep8 naming
+    "C", # flake8-comprehensions
+    "B", # flake8-bugbear
+    "PTH", # flake8-use-pathlib
+    "ANN", # flake8-annotations
+]
