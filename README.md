@@ -1,6 +1,6 @@
 # BIF Template
 
-Welcome to my BIF template, please follow the steps below. (Please get out)
+Welcome to BIF template, please follow the steps below.
 
 ## Project Description
 
@@ -11,7 +11,7 @@ Template for developing Python applications.
 - **Name**: template thingy 
 - **Description**: Simple python project template.
 - **Version**: 0.0.1
-- **Author**: Bjorn Wiggers (Bjornwiggers@hotmail.com)
+- **Author**: Bjorn Wiggers
 
 ## Quickstart guide:
 
@@ -98,4 +98,4 @@ all local modules in the enviroment can be saved using.
 pip freeze > requirements.txt
 
 ## Contact
-   Bjorn Wiggers - bjornwiggers@hotmail.com or bjorn.wiggers@wur.nl
+   Bjorn Wiggers - bjorn.wiggers@wur.nl
