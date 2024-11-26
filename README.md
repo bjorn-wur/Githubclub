@@ -13,7 +13,20 @@ Template for developing Python applications.
 - **Version**: 0.0.1
 - **Author**: Bjorn Wiggers (Bjornwiggers@hotmail.com)
 
-## Setup Instructions
+## Quickstart guide:
+
+   ```bash
+   git clone <repository_url>
+
+   python -m venv env
+   source env/bin/activate  # On Windows, use `env\Scripts\activate`
+   pip install -r requirements.txt
+   pip install -r dev-requirements.txt
+
+   pre-commit install
+   ```
+
+## Full Setup Instructions:
 
 Follow these steps to set up the project on your local machine:
 
@@ -79,6 +92,10 @@ Follow these steps to set up the project on your local machine:
 you might have to add credentials:
    git config --global user.email bjorn.wiggers@wur.nl
    git config --global user.name bjorn-wur
+
+pre-commit hooks can be run without commit with pre-commit run --all-files
+all local modules in the enviroment can be saved using. 
+pip freeze > requirements.txt
 
 ## Contact
    Bjorn Wiggers - bjornwiggers@hotmail.com or bjorn.wiggers@wur.nl
