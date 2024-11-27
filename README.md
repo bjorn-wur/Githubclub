@@ -16,7 +16,7 @@ Template for developing Python applications.
 ## Quickstart guide:
 
    ```bash
-   git clone <repository_url>
+   git clone git@github.com:bjorn-wur/Githubclub.git
 
    python -m venv env
    source env/bin/activate  # On Windows, use `env\Scripts\activate`
@@ -25,6 +25,9 @@ Template for developing Python applications.
 
    pre-commit install
    ```
+
+if you already have a repo but are unable to push please change the remote origin via the following command.
+git remote set-url origin git@git.wur.nl:wigge031/Githubclub.git
 
 ## Full Setup Instructions:
 
