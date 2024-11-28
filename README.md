@@ -27,7 +27,7 @@ Template for developing Python applications.
    ```
 
 if you already have a repo but are unable to push please change the remote origin via the following command.
-git remote set-url origin git@git.wur.nl:wigge031/Githubclub.git
+git remote set-url origin git@github.com:bjorn-wur/Githubclub.git
 
 ## Full Setup Instructions:
 
