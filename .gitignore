@@ -1,4 +1,5 @@
 # somewhat random stuff. this gitignore is based on a template i found. 
+trimlog_test.txt
 venv/
 .vscode/
 *.pkl
