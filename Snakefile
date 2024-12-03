@@ -18,30 +18,30 @@ GENOME = "genome/pepperbase/Capsicum annuum_genome.fasta2.zip"
  
 rule all:
 	input:
-		expand(fastqc_dir + "/{sample}_fastqc.html", sample=ALL_SAMPLES),
-		"multiqc_report",
-#		expand("sam_files/{sample}.sam", sample=SAMPLES),
-#$		expand("bam_files/{sample}.bam", sample=SAM_FILES),
-		expand("bam_bai_files/{sample}.bam.bai", sample=BAM_FILES)
+		# expand(fastqc_dir + "/{sample}_fastqc.html", sample=ALL_SAMPLES),
+		# "multiqc_report",
+		expand("sam_files/{sample}.sam", sample=SAMPLES),
+		expand("bam_files/{sample}.bam", sample=SAM_FILES),
+		# expand("bam_bai_files/{sample}.bam.bai", sample=BAM_FILES)
 
-rule fastqc:
-	input:
-		fastq = "fastqc_test/{sample}.fastq.gz"
-	output:
-		report = fastqc_dir+ "/{sample}_fastqc.html",
-		zipped_report=fastqc_dir +"/{sample}_fastqc.zip"
-	shell:
-		"fastqc {input.fastq} -o {fastqc_dir}"
+# rule fastqc:
+# 	input:
+# 		fastq = "fastqc_test/{sample}.fastq.gz"
+# 	output:
+# 		report = fastqc_dir+ "/{sample}_fastqc.html",
+# 		zipped_report=fastqc_dir +"/{sample}_fastqc.zip"
+# 	shell:
+# 		"fastqc {input.fastq} -o {fastqc_dir}"
 
-rule multiqc:
-	input:
-		fastqc_folder="fastqc_test/fastqc_report"
-	output:
-		report_dir=directory("multiqc_report")
-	shell:
-	        """
-	        multiqc -f {input.fastqc_folder} -o {output.report_dir}
-	"""
+# rule multiqc:
+# 	input:
+# 		fastqc_folder="fastqc_test/fastqc_report"
+# 	output:
+# 		report_dir=directory("multiqc_report")
+# 	shell:
+# 	        """
+# 	        multiqc -f {input.fastqc_folder} -o {output.report_dir}
+# 	"""
 
 
 #rule hisat2_index:
@@ -61,8 +61,8 @@ rule multiqc:
 
 rule hisat2_mapping:
 	input:
-		reads_1="fastqc_test/{sample}_1.fastq.gz",
-		reads_2="fastqc_test/{sample}_2.fastq.gz",
+		reads_1="data/GSE240943/{sample}_1.fastq.gz",
+		reads_2="data/GSE240943/{sample}_2.fastq.gz",
 		index="genome/pepperbase/T2T_hisat.1.ht2"
 	output:
 		"sam_files/{sample}.sam"
@@ -84,13 +84,13 @@ rule sort_sam: # works for both bowtie2 and hisat2
 
 
 
-rule index_bam: # works for both bowtie2 and hisat2
-	input:
-		"bam_files/{sample}.bam"
-	output:
-		"bam_bai_files/{sample}.bam.bai"
-	shell:
-		"samtools index {input} {output}"
+# rule index_bam: # works for both bowtie2 and hisat2
+# 	input:
+# 		"bam_files/{sample}.bam"
+# 	output:
+# 		"bam_bai_files/{sample}.bam.bai"
+# 	shell:
+# 		"samtools index {input} {output}"
 
 #rule convert_gff:
 #	input:
@@ -100,13 +100,28 @@ rule index_bam: # works for both bowtie2 and hisat2
 #	shell:
 #		"gffread {input.annotation} -T -o {output}"
 
-#rule stringtie:
-#	input:
-#		bamfile="bam_files/{sample}.bam", # stringtie is only used after hisat2
-#		annotation="genes.gtf"
-#	output:
-#		"gtf_file/{sample}.gtf"
-#	params:
-#		label="{sample}"                                                                                                                
-#	shell:
-#		"stringtie -G {input.annotation} -o {output} -l {params.label} {input.bamfile}"
+rule stringtie:
+	input:
+		bamfile="bam_files/{sample}.bam", # stringtie is only used after hisat2
+		annotation="genes.gtf"
+	output:
+		"gtf_file/{sample}.gtf"
+	params:
+		label="{sample}"                                                                                                                
+	shell:
+		"stringtie -G {input.annotation} -o {output} -l {params.label} {input.bamfile} -e"
+
+
+rule prepDE:
+    input:
+        gtf_file="gtf_file/{sample}"
+    output:
+        "output/{sample}_gene_count_matrix.csv", 
+        "output/{sample}_transcript_count_matrix.csv"
+    params:
+        script="Tools/prepDE.py",
+    shell:
+        """
+        python {params.script} -i {input.gtf_file}
+        """
+
