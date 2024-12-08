@@ -65,7 +65,6 @@ def main():
     gene_ids_empty = []
     gene_ids_up = parse_tsv(tsv_up, gene_ids_empty)
     gene_ids_tot = parse_tsv(tsv_down, gene_ids_up)
-    print(gene_ids_tot)
     parse_fasta(fasta_file, gene_ids_tot, new_fasta)
 
 
