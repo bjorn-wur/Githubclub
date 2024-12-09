@@ -1,5 +1,7 @@
 
 SAMPLES = glob_wildcards("fastqc_test/{sample}.fastq.gz").sample 
+# import pathlib
+import os
 
 
 # Categorize samples into paired and single-end
@@ -9,6 +11,12 @@ single_samples = [f for f in SAMPLES if not any(f.startswith(p) for p in paired_
 fastqc_dir = "fastqc_test/fastqc_report"
 
 # Rule to run all jobs
+index_dir = "genome_index"
+GENOME = "genome/pepperbase/Capsicum annuum_genome.fasta2.zip"
+
+gtf_files = [f"{os.path.splitext(sample)[0]}.fasta2.zip" for sample in SAMPLES]
+print(gtf_files)
+
 rule all:
 	input:
 		expand(f"{fastqc_dir}/{{sample}}_fastqc.html", sample=SAMPLES),
@@ -46,7 +54,7 @@ rule hisat2_mapping:
 		read_1="fastqc_test/{sample}_1.fastq.gz",
 		read_2="fastqc_test/{sample}_2.fastq.gz"
 	output:
-		temp("{sample}.sam")
+		temp("sam_files/{sample}.sam")
 	params:
 		index="genome/pepperbase/T2T_hisat"
 	threads: 4
@@ -91,12 +99,23 @@ rule stringtie:
 		bamfile="bam_files/{sample}.bam", # stringtie is only used after hisat2
 		annotation="Capsicum_annuum_genome_fixed.gtf"
 	output:
-		"gtf_files/{sample}.gtf"
+		a="gtf_file/{sample}.gtf"
 	params:
 		label="{sample}"                                                                                                                
 	shell:
-		"stringtie -G {input.annotation} -o {output} -l {params.label} {input.bamfile} -e"
+		"stringtie -G {input.annotation} -o {output.a} -l {params.label} {input.bamfile} -e"
 
+
+rule prepde_input:
+    output:
+        a="prepde_input.txt"
+    run:
+        # Retrieve all sample names from BAM files
+        BAM_FILES = glob_wildcards("bam_files/{sample}.bam").sample
+        # Open the output file
+        with open(output[0], "w") as f:
+            for i,  sample in enumerate(BAM_FILES):
+                f.write(f"{sample} gtf_file/{sample}.gtf\n")
 
 rule prepde_input:
 	output:
@@ -110,15 +129,39 @@ rule prepde_input:
 				f.write(f"{sample} gtf_files/{sample}.gtf\n")
 
 rule prepDE:
-	input:
-		prepde="prepde_input.txt",
-	output:
-		"gene_count_matrix.csv", 
-		"transcript_count_matrix.csv"
-	params:
-		script="Tools/prepDE.py"
-	shell:
+    input:
+        prepde="prepde_input.txt",
+    output:
+        "counts/gene_count_matrix.csv", 
+        "counts/transcript_count_matrix.csv"
+    params:
+        script="Tools/prepDE.py"
+    shell:
+        """
+        python {params.script} -i {input.prepde}
+        """
+
+rule gffread:
+    input:
+
+    output:
+
+    params:
+
+    shell:
 		"""
-		python {params.script} -i {input.prepde}
+		Tools/gffread/gffread gtf_file/SRR24630900.gtf -g "Capsicum annuum_genome.fasta2" -w tgffread_output_test.fasta
 		"""
 
+rule eggnog_mapper:
+    input:
+
+    output:
+
+    params:
+
+    shell:
+        """
+        Tools/eggnog-mapper/emapper.py -i tgffread_output_test.fasta -o eggnogtest  --itype CDS  --cpu 8
+		-m diamond --decorate_gff gtf_file/SRR24630900.gtf --decorate_gff_ID_field GeneID --override
+        """

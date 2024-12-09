@@ -1,5 +1,13 @@
-# somewhat random stuff. this gitignore is based on a template i found. 
+# project specific ignore
+*.sam
+*.bam
+.nfs
+
+# personal ignore
 trimlog_test.txt
+personal_report.md
+
+# enviroment things
 venv/
 .vscode/
 *.pkl
