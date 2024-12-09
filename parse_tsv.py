@@ -4,9 +4,8 @@ Author: Ludovica Piccioli
 Description: parses a FASTA file to only keep the reads present in the TSV file
 Usage: python3 parse_tsv.py <tsv_up> <tsv_down> <fasta_file> <new_fasta>
 """
-
+import os
 from sys import argv
-
 
 def parse_tsv(tsv_file, gene_ids):
     """Parses a TSV file and makes a list of gene ids
@@ -47,8 +46,10 @@ def parse_fasta(fasta_file, gene_ids, new_fasta):
     with open(new_fasta, "w") as fout:
         for i in range(len(lines)):
             if lines[i].startswith(">"):
-                line = lines[i].strip().split()[0]
+                # print(lines[i])
+                line = lines[i].strip().split("-")[0]
                 gene_id = line[1:]
+                # print(gene_id)
                 if gene_id in gene_ids:
                     fout.write(lines[i])
                     for n in range(1, len(lines) - i):
@@ -61,11 +62,28 @@ def parse_fasta(fasta_file, gene_ids, new_fasta):
 def main():
     """This is the main function
     """
+        # Path to the directory
+    r_output_dir = "./fasta_repo"
     tsv_up, tsv_down, fasta_file, new_fasta = argv[1], argv[2], argv[3], argv[4]
+    tsv_up = "up_reg.tsv"
+    tsv_down = "down_reg.tsv"
     gene_ids_empty = []
-    gene_ids_up = parse_tsv(tsv_up, gene_ids_empty)
-    gene_ids_tot = parse_tsv(tsv_down, gene_ids_up)
-    parse_fasta(fasta_file, gene_ids_tot, new_fasta)
+    # Loop through files in the directory
+    for file in os.listdir(r_output_dir):
+        file2 = "./fasta_repo/" + file
+        fasta_file = file2
+        new_fasta = f"{file}"
+        # command = f"python3 parse_tsv.py up_reg.tsv down_reg.tsv {file} test_48/{file}"
+        # subprocess.run(command, shell=True, capture_output=True, text=True)
+        gene_ids_up = parse_tsv(tsv_up, gene_ids_empty)
+        gene_ids_tot = parse_tsv(tsv_down, gene_ids_up)
+        parse_fasta(fasta_file, gene_ids_tot, new_fasta)
+
+
+
+
+    # gene_ids_tot = parse_tsv(tsv_down, gene_ids_up)
+    # parse_fasta(fasta_file, gene_ids_tot, new_fasta)
 
 
 if __name__ == "__main__":
