@@ -21,8 +21,8 @@ def merge_annotation_files(list_files):
     list_geneids = []
     for i in range(len(list_files)):
         with open(list_files[i], "r") as fin:
-            # skip the first 4 and last 3 lines, keep headers
-            lines = fin.readlines()[5:-3]
+            # skip the first and last 4 lines, keep headers
+            lines = fin.readlines()[4:-4]
             if i == 0: # if it is the fist annotation file
                 for j in range(len(lines)):
                     gene_id = lines[j].split("\t")[11] # gene id is 12th column
@@ -131,7 +131,6 @@ def parse_tsv(tsv_file, dict_ids_kos, new_tsv):
                 elif isinstance(ko_n, str):
                     fout.write(ko_n)
                 fout.write("\n")
-
 
 
 def main():
