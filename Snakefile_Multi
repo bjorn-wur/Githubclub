@@ -1,0 +1,46 @@
+
+SAMPLES = glob_wildcards("fastqc_test/{sample}.fastq.gz").sample 
+# import pathlib
+import os
+
+
+# Categorize samples into paired and single-end
+paired_samples = list(set(f.split('_')[0] for f in SAMPLES if '_1' in f or '_2' in f))
+single_samples = [f for f in SAMPLES if not any(f.startswith(p) for p in paired_samples)]
+
+fastqc_dir = "fastqc_test/fastqc_report"
+
+# Rule to run all jobs
+index_dir = "genome_index"
+GENOME = "genome/pepperbase/Capsicum annuum_genome.fasta2.zip"
+
+gtf_files = [f"{os.path.splitext(sample)[0]}.fasta2.zip" for sample in SAMPLES]
+print(gtf_files)
+
+rule all:
+	input:
+		expand(f"{fastqc_dir}/{{sample}}_fastqc.html", sample=SAMPLES),
+		expand(f"{fastqc_dir}/{{sample}}_fastqc.zip", sample=SAMPLES),
+		"multiqc_report/multiqc_report.html",
+		
+
+rule fastqc:
+        input:
+                fastq = "fastqc_test/{sample}.fastq.gz"
+        output:
+                report = fastqc_dir + "/{sample}_fastqc.html",
+                zipped_report = fastqc_dir + "/{sample}_fastqc.zip"
+        params:
+                fastqc_dir=fastqc_dir
+        shell:
+                "fastqc {input.fastq} -o {params.fastqc_dir}"
+
+rule multiqc:
+	input:
+		fastqc_reports = expand("fastqc_test/fastqc_report/{sample}_fastqc.html", sample=SAMPLES),
+		fastqc_zips = expand("fastqc_test/fastqc_report/{sample}_fastqc.zip", sample=SAMPLES)
+	output:
+		"multiqc_report/multiqc_report.html"  # Output path for the multiqc report
+	shell:
+		"multiqc -f fastqc_test/fastqc_report -o multiqc_report"
+
