@@ -1,0 +1,118 @@
+,time,Run,treatment
+0,0h,SRR24630907,Xag8ra_Mock
+1,0h,SRR24630908,Xag8ra_Mock
+2,0h,SRR24630941,Xcv_Mock
+3,0h,SRR24630942,Xcv_Mock
+4,0h,SRR24630943,Xcv_Mock
+5,0h,SRR24630961,P.capsici_Mock
+6,0h,SRR24630986,P.capsici_Mock
+7,0h,SRR24630987,P.capsici_Mock
+8,12h,SRR24630874,Xanthomonas campestris pv. vesicatoria race 3
+9,12h,SRR24630888,Xanthomonas campestris pv. vesicatoria race 1
+10,12h,SRR24630889,Xanthomonas campestris pv. vesicatoria race 1
+11,12h,SRR24630890,Xanthomonas campestris pv. vesicatoria race 1
+12,12h,SRR24630903,Xag8ra_Mock
+13,12h,SRR24630904,Xag8ra_Mock
+14,12h,SRR24630905,Xag8ra_Mock
+15,12h,SRR24630921,Xanthomonas axonopodis pv. glycines 8ra
+16,12h,SRR24630922,Xanthomonas axonopodis pv. glycines 8ra
+17,12h,SRR24630923,Xanthomonas axonopodis pv. glycines 8ra
+18,12h,SRR24630928,Phytophthora capsici
+19,12h,SRR24630937,Xcv_Mock
+20,12h,SRR24630938,Xcv_Mock
+21,12h,SRR24630939,Phytophthora capsici
+22,12h,SRR24630940,Xcv_Mock
+23,12h,SRR24630950,Phytophthora capsici
+24,12h,SRR24630960,P.capsici_Mock
+25,12h,SRR24630962,P.capsici_Mock
+26,12h,SRR24630963,P.capsici_Mock
+27,12h,SRR24630983,Xanthomonas campestris pv. vesicatoria race 3
+28,12h,SRR24630984,Xanthomonas campestris pv. vesicatoria race 3
+29,1D,SRR24630957,P.capsici_Mock
+30,1D,SRR24630958,P.capsici_Mock
+31,1D,SRR24630959,P.capsici_Mock
+32,1D,SRR25511955,Phytophthora capsici
+33,1D,SRR25511956,Phytophthora capsici
+34,1D,SRR25511957,Phytophthora capsici
+35,1h,SRR24630895,Phytophthora capsici
+36,1h,SRR24630900,Xag8ra_Mock
+37,1h,SRR24630901,Xag8ra_Mock
+38,1h,SRR24630902,Xag8ra_Mock
+39,1h,SRR24630906,Phytophthora capsici
+40,1h,SRR24630917,Phytophthora capsici
+41,1h,SRR24630918,Xanthomonas axonopodis pv. glycines 8ra
+42,1h,SRR24630919,Xanthomonas axonopodis pv. glycines 8ra
+43,1h,SRR24630920,Xanthomonas axonopodis pv. glycines 8ra
+44,1h,SRR24630954,P.capsici_Mock
+45,1h,SRR24630955,P.capsici_Mock
+46,1h,SRR24630956,P.capsici_Mock
+47,24h,SRR24630885,Xanthomonas campestris pv. vesicatoria race 1
+48,24h,SRR24630886,Xanthomonas campestris pv. vesicatoria race 1
+49,24h,SRR24630887,Xanthomonas campestris pv. vesicatoria race 1
+50,24h,SRR24630897,Xag8ra_Mock
+51,24h,SRR24630898,Xag8ra_Mock
+52,24h,SRR24630899,Xag8ra_Mock
+53,24h,SRR24630915,Xanthomonas axonopodis pv. glycines 8ra
+54,24h,SRR24630916,Xanthomonas axonopodis pv. glycines 8ra
+55,24h,SRR24630934,Xcv_Mock
+56,24h,SRR24630935,Xcv_Mock
+57,24h,SRR24630936,Xcv_Mock
+58,24h,SRR24630980,Xanthomonas campestris pv. vesicatoria race 3
+59,24h,SRR24630981,Xanthomonas campestris pv. vesicatoria race 3
+60,24h,SRR24630982,Xanthomonas campestris pv. vesicatoria race 3
+61,2h,SRR24630884,Phytophthora capsici
+62,2h,SRR24630951,P.capsici_Mock
+63,2h,SRR24630952,P.capsici_Mock
+64,2h,SRR24630953,P.capsici_Mock
+65,2h,SRR24630974,Phytophthora capsici
+66,2h,SRR24630985,Phytophthora capsici
+67,3h,SRR24630881,Xanthomonas campestris pv. vesicatoria race 1
+68,3h,SRR24630882,Xanthomonas campestris pv. vesicatoria race 1
+69,3h,SRR24630883,Xanthomonas campestris pv. vesicatoria race 1
+70,3h,SRR24630893,Xag8ra_Mock
+71,3h,SRR24630894,Xag8ra_Mock
+72,3h,SRR24630896,Xag8ra_Mock
+73,3h,SRR24630912,Xanthomonas axonopodis pv. glycines 8ra
+74,3h,SRR24630913,Xanthomonas axonopodis pv. glycines 8ra
+75,3h,SRR24630914,Xanthomonas axonopodis pv. glycines 8ra
+76,3h,SRR24630931,Xcv_Mock
+77,3h,SRR24630932,Xcv_Mock
+78,3h,SRR24630933,Xcv_Mock
+79,3h,SRR24630977,Xanthomonas campestris pv. vesicatoria race 3
+80,3h,SRR24630978,Xanthomonas campestris pv. vesicatoria race 3
+81,3h,SRR24630979,Xanthomonas campestris pv. vesicatoria race 3
+82,48h,SRR24630878,Xanthomonas campestris pv. vesicatoria race 1
+83,48h,SRR24630879,Xanthomonas campestris pv. vesicatoria race 1
+84,48h,SRR24630880,Xanthomonas campestris pv. vesicatoria race 1
+85,48h,SRR24630927,Xcv_Mock
+86,48h,SRR24630929,Xcv_Mock
+87,48h,SRR24630930,Xcv_Mock
+88,48h,SRR24630973,Xanthomonas campestris pv. vesicatoria race 3
+89,48h,SRR24630975,Xanthomonas campestris pv. vesicatoria race 3
+90,48h,SRR24630976,Xanthomonas campestris pv. vesicatoria race 3
+91,4h,SRR24630947,P.capsici_Mock
+92,4h,SRR24630948,P.capsici_Mock
+93,4h,SRR24630949,P.capsici_Mock
+94,4h,SRR24630967,Phytophthora capsici
+95,4h,SRR24630968,Phytophthora capsici
+96,4h,SRR24630969,Phytophthora capsici
+97,6h,SRR24630875,Xanthomonas campestris pv. vesicatoria race 1
+98,6h,SRR24630876,Xanthomonas campestris pv. vesicatoria race 1
+99,6h,SRR24630877,Xanthomonas campestris pv. vesicatoria race 1
+100,6h,SRR24630891,Xag8ra_Mock
+101,6h,SRR24630892,Xag8ra_Mock
+102,6h,SRR24630909,Xanthomonas axonopodis pv. glycines 8ra
+103,6h,SRR24630910,Xanthomonas axonopodis pv. glycines 8ra
+104,6h,SRR24630911,Xanthomonas axonopodis pv. glycines 8ra
+105,6h,SRR24630924,Xcv_Mock
+106,6h,SRR24630925,Xcv_Mock
+107,6h,SRR24630926,Xcv_Mock
+108,6h,SRR24630944,P.capsici_Mock
+109,6h,SRR24630945,P.capsici_Mock
+110,6h,SRR24630946,P.capsici_Mock
+111,6h,SRR24630964,Phytophthora capsici
+112,6h,SRR24630965,Phytophthora capsici
+113,6h,SRR24630966,Phytophthora capsici
+114,6h,SRR24630970,Xanthomonas campestris pv. vesicatoria race 3
+115,6h,SRR24630971,Xanthomonas campestris pv. vesicatoria race 3
+116,6h,SRR24630972,Xanthomonas campestris pv. vesicatoria race 3

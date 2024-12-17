@@ -1,7 +1,7 @@
 # project specific ignore
 *.sam
 *.bam
-.nfs
+.nfs*
 
 # personal ignore
 trimlog_test.txt

@@ -15,90 +15,23 @@ Template for developing Python applications.
 
 ## Quickstart guide:
 
-   ```bash
-   git clone git@github.com:bjorn-wur/Githubclub.git
+## How to run:
+The snakemake pipeline can be used to run the analysis up until the DESEQ2 which is done through an R script, which can be run as follows:
 
-   python -m venv env
-   source env/bin/activate  # On Windows, use `env\Scripts\activate`
-   pip install -r requirements.txt
-   pip install -r dev-requirements.txt
+$$ place holder
 
-   pre-commit install
-   ```
+(Assuming you have a gff file and a fasta file containg the whole genome.)
+From this,.we require a complete list of all th genes present in the original genome, this way it can be annotated using EGGNOG. If you want to regenerate this file you would use the following command:
 
-if you already have a repo but are unable to push please change the remote origin via the following command.
-git remote set-url origin git@github.com:bjorn-wur/Githubclub.git
+Tools/gffread/gffread Capsicum_annuum_genome.gff -g "Capsicum_annuum_genome.fasta2" -w total_genome.fasta
 
-## Full Setup Instructions:
+In order to get associated data with each gen eggnog is used on the resulting total_genome fasta file with the following command: 
 
-Follow these steps to set up the project on your local machine:
+Tools/eggnog-mapper/eggnog-mapper/emapper.py -i total_genome.fasta -o eggnog_output  --itype CDS  --cpu 4 -m diamond --decorate_gff Capsicum_annuum_genome.gtf --decorate_gff_ID_field GeneID --override --tax_scope 33090
 
-1. **Clone the Repository**
-
-   Start by cloning the project repository (Not Applicable currently):
-
-   ```bash
-   git clone <repository_url>
-   ```
-
-   or just copy it i dont care.
-
-2. **Set Up a Virtual Environment**
-
-   It is recommended to use a virtual environment to manage project dependencies. You can create and activate a virtual environment using:
-
-   ```bash
-   python -m venv env
-   source env/bin/activate  # On Windows, use `env\Scripts\activate`
-   ```
-
-3. **Install Dependencies**
-
-   Once the virtual environment is activated, you can install the required dependencies. There are two types of dependencies: main requirements and development requirements.
-
-   - **Main Requirements**: Install the main project dependencies listed in `requirements.txt`:
-
-     ```bash
-     pip install -r requirements.txt
-     ```
-
-   - **Development Requirements**: Install the development dependencies listed in `dev-requirements.txt`:
-      currently there are none
-
-     ```bash
-      pip install -r dev-requirements.txt
-     ```
-
-4. **Set Up Pre-commit Hooks**
-
-   The project uses `pre-commit` to maintain code quality. Set up the pre-commit hooks using:
-
-   ```bash
-      pre-commit install
-   ```
-
-5. **Run Tests**
-
-   To ensure everything is set up correctly, you can run unit tests in .\test directory
-
-   ```bash
-   python -m pytest
-   ```
+using the annotation_and_tsv_parsing.py this would then create a new file containing the:
+GeneID	log2FoldChange	color	KO_number 
+p_capsici_4h_downregulatednew.tsv
+(usage python3 annotation_and_tsv_parsing.py folder_that_contains_r_output)
 
 
-6. **requirements.txt**
-   to keep thing simple just use requirements freeze in order to add requirements to the text file
-   (so pip freeze > requirements.txt)
-
-
-## Additional Information
-you might have to add credentials:
-   git config --global user.email bjorn.wiggers@wur.nl
-   git config --global user.name bjorn-wur
-
-pre-commit hooks can be run without commit with pre-commit run --all-files
-all local modules in the enviroment can be saved using. 
-pip freeze > requirements.txt
-
-## Contact
-   Bjorn Wiggers - bjorn.wiggers@wur.nl
