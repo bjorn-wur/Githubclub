@@ -1,9 +1,0 @@
-SRR24630901 output/SRR24630901_quantified.gtf
-SRR24630920 output/SRR24630920_quantified.gtf
-SRR24630902 output/SRR24630902_quantified.gtf
-SRR24630954 output/SRR24630954_quantified.gtf
-SRR24630917 output/SRR24630917_quantified.gtf
-SRR24630900 output/SRR24630900_quantified.gtf
-SRR24630919 output/SRR24630919_quantified.gtf
-SRR24630918 output/SRR24630918_quantified.gtf
-SRR24630955 output/SRR24630955_quantified.gtf

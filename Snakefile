@@ -140,28 +140,3 @@ rule prepDE:
         """
         python {params.script} -i {input.prepde}
         """
-
-rule gffread:
-    input:
-
-    output:
-
-    params:
-
-    shell:
-		"""
-		Tools/gffread/gffread gtf_file/SRR24630900.gtf -g "Capsicum annuum_genome.fasta2" -w tgffread_output_test.fasta
-		"""
-
-rule eggnog_mapper:
-    input:
-
-    output:
-
-    params:
-
-    shell:
-        """
-        Tools/eggnog-mapper/emapper.py -i tgffread_output_test.fasta -o eggnogtest  --itype CDS  --cpu 8
-		-m diamond --decorate_gff gtf_file/SRR24630900.gtf --decorate_gff_ID_field GeneID --override
-        """
